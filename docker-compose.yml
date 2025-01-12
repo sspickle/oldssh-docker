@@ -2,8 +2,7 @@ services:
     sshd:
         tty: true
         container_name: oldssh
-        #image: us.gcr.io/gcpdrive-sjstest/oldsssh:1
-        image: oldssh:latest
+        image: us.gcr.io/gcpdrive-sjstest/oldsssh:1
         volumes:
             - ./shared/:/shared
             - ./passwd:/etc/passwd:ro
