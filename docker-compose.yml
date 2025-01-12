@@ -1,12 +1,24 @@
 services:
     sshd:
         tty: true
-        container_name: sshd
-        image: us.gcr.io/gcpdrive-sjstest/oldsssh:1
+        container_name: oldssh
+        #image: us.gcr.io/gcpdrive-sjstest/oldsssh:1
+        image: oldssh:latest
         volumes:
-            - .:/work
+            - ./shared/:/shared
+            - ./passwd:/etc/passwd:ro
+            - ./shadow:/etc/shadow:ro
+            - homes:/home/
         command: ["/usr/local/sbin/sshd", "-D"]
         ports:
             - "2222:22"
 
+
+volumes:
+  homes:
+
+networks:
+  sshnet:
+    name: sshd_default
+    external: true
 
