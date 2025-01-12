@@ -16,7 +16,7 @@ RUN cd openssh-6.7p1 && ./configure && make && make install
 
 RUN mkdir /var/run/sshd
 
-COPY sshd_config /etc/ssh/sshd_config
+COPY ./sshd_config /etc/ssh/sshd_config
 
 RUN groupadd -g 108 sshd
 
