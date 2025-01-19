@@ -10,7 +10,7 @@ services:
             - homes:/home/
         command: ["/usr/local/sbin/sshd", "-D","-d","-e"]
         ports:
-            - "2222:22"
+            - "2122:22"
 
 
 volumes:
