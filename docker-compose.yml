@@ -2,11 +2,13 @@ services:
     sshd:
         tty: true
         container_name: oldssh
+        restart: always
         image: us.gcr.io/gcpdrive-sjstest/oldsssh:1
         volumes:
             - ./shared/:/shared
             - ./passwd:/etc/passwd:ro
             - ./shadow:/etc/shadow:ro
+            - ./group:/etc/group:ro
             - homes:/home/
         command: ["/usr/local/sbin/sshd", "-D","-d","-e"]
         ports:
