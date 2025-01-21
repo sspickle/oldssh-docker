@@ -30,6 +30,12 @@ RUN useradd -u 108 -g 108 -c sshd -d / sshd
 
 # RUN chown -R rsync:rsync /home/rsync
 
+RUN wget https://github.com/RsyncProject/rsync/archive/refs/tags/v3.1.1.tar.gz
+
+RUN tar -xzvf v3.1.1.tar.gz
+
+RUN cd rsync-3.1.1 && ./configure && make && make install
+
 EXPOSE 22
 
 CMD ["/usr/local/sbin/sshd", "-D"]
